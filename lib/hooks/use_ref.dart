@@ -5,11 +5,13 @@ class UseRefScreen extends HookWidget {
   const UseRefScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     final name = useState("");
-
-    final contorllerText = useTextEditingController(text: "");
-
+    final controllerText = useTextEditingController(text: "");
+    useEffect(() {
+      name.value = controllerText.text;
+      print(name.value);
+    }, []);
     return Scaffold(
       appBar: AppBar(
         title: Text("Use Ref ... "),
@@ -17,6 +19,7 @@ class UseRefScreen extends HookWidget {
       body: Column(
         children: [
           TextFormField(
+            controller: controllerText,
             decoration: const InputDecoration(
               hintText: "Enter a name ..",
             ),
