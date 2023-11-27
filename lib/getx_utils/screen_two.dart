@@ -6,23 +6,23 @@ class ScreenTwo extends StatelessWidget {
   const ScreenTwo({super.key});
   @override
   Widget build(BuildContext context) {
-
-final data =Get.arguments as String;
+    final data = Get.arguments as String;
 
     return Scaffold(
-appBar: AppBar(
-  title: Text("Screen Two"),
-),
+      appBar: AppBar(
+        title: Text("Screen Two"),
+      ),
       body: Center(
         child: Column(children: [
-
           Text("Screen Two"),
           Text(data),
-         ElevatedButton( child: Text("Move to next page.."),
-         onPressed: (){
-    Get.back();
-    Get.back();
-         },)
+          ElevatedButton(
+            child: Text("Move to next page.."),
+            onPressed: () {
+              Get.back();
+              Get.back();
+            },
+          )
         ]),
       ),
     );
