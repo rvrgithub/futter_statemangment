@@ -7,7 +7,6 @@ class ScreenTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = Get.arguments as String;
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Screen Two"),

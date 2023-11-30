@@ -11,20 +11,54 @@ class ReduxScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-title: Text("Redux Store..."),
+      appBar: AppBar(
+        title: Text("Redux Store..."),
       ),
       body: Center(
         child: Column(
           children: [
-            StoreConnector<AppState ,int>(builder: (context,counter){
-              return Center(child: Column(
-                children: [
-                  Text(counter.toString()),
-                  ElevatedButton(child: Text("+"), onPressed: store.dispatch(IncrementCount())),
-                ],
-              ));
-            }, converter: (store)=>store.state.counter)
+            StoreConnector<AppState, int>(
+                builder: (context, counter) {
+                  return Center(
+                      child: Column(
+                    children: [
+                      Text(counter.toString()),
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                                child: Text("+"),
+                                onPressed: () {
+                                  store.dispatch(IncrementCount());
+                                }),
+                            ElevatedButton(
+                                child: Text("-"),
+                                onPressed: () {
+                                  store.dispatch(DecrementCount());
+                                })
+                          ],
+                        ),
+                      )
+                    ],
+                  ));
+                },
+                converter: (store) => store.state.counter),
+            StoreConnector<AppState, dynamic>(
+                builder: (context, userName) {
+                  return Column(
+                    children: [
+                      Text(userName.toString()),
+                      ElevatedButton(
+                          child: Text("Update Text"),
+                          onPressed: () {
+                            store.dispatch(ShowUserName("Radhika Verma"));
+                          })
+                    ],
+                  );
+                },
+                converter: (store) => store.state.userName)
           ],
         ),
       ),
