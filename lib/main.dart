@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get/get.dart';
 import 'package:my_first_project/Provider/class_provider.dart';
 import 'package:my_first_project/Provider/provider_screen.dart';
+import 'package:my_first_project/bloc_state/bloc_screen.dart';
 import 'package:my_first_project/getx_utils/getx_theme.dart';
 import 'package:my_first_project/getx_utils/getx_utils_screen.dart';
 import 'package:my_first_project/hooks/use_callback.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       child: ChangeNotifierProvider(
         create: (_)=>MyClassData(),
        child: GetMaterialApp(
-        initialRoute: "/reduxScreen",
+        initialRoute: "/blocScreen",
         routes: {
           "/useState": (context) => UseStateScreen(),
           "/useCallback": (context) => UseCallBackScreen(),
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           "/getXScreen":(context)=>GetxScreen(),
           "/getXThemeScreen":(context)=> GetxThemeScreen(),
           "/reduxScreen":(context) => ReduxScreen(),
+          "/blocScreen":(context)=>BlocScreen(),
         },
       )),
     );
